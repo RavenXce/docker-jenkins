@@ -21,7 +21,9 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     python-setuptools \
     python-dev \
-    python-pip
+    python-pip \
+    nodejs \
+    npm
 
 # Install ansible using pip
 RUN pip install ansible
