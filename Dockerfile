@@ -28,4 +28,8 @@ RUN apt-get update && apt-get install -y \
 # Install ansible using pip
 RUN pip install ansible
 
+# Add jenkins as a docker user
+RUN groupadd -g 999 docker
+RUN gpasswd -a jenkins docker
+
 USER jenkins
