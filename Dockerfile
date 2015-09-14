@@ -21,5 +21,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sSL https://get.docker.com/gpg | apt-key add -
 RUN curl -sSL https://get.docker.com/ | sh
+RUN usermod -aG docker jenkins
 
 USER jenkins
