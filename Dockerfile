@@ -2,6 +2,7 @@ FROM jenkins
 
 USER root
 
+# Install additional tools / package dependencies for building stuff
 RUN apt-get update && apt-get install -y \
     make \
     automake \
@@ -17,10 +18,12 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     libgdbm3 \
     libgdbm-dev \
-    libpq-dev
+    libpq-dev \
+    python-setuptools \
+    python-dev \
+    python-pip
 
-RUN curl -sSL https://get.docker.com/gpg | apt-key add -
-RUN curl -sSL https://get.docker.com/ | sh
-RUN usermod -aG docker jenkins
+# Install ansible using pip
+RUN pip install ansible
 
 USER jenkins
