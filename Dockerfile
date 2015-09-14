@@ -2,6 +2,10 @@ FROM jenkins
 
 USER root
 
+# This is necessary to get the latest ver of Node.js mainly
+# because javascript is really silly
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
+
 # Install additional tools / package dependencies for building stuff
 RUN apt-get update && apt-get install -y \
     make \
@@ -22,8 +26,7 @@ RUN apt-get update && apt-get install -y \
     python-setuptools \
     python-dev \
     python-pip \
-    nodejs \
-    npm
+    nodejs
 
 # Install ansible using pip
 RUN pip install ansible
