@@ -19,4 +19,7 @@ RUN apt-get update && apt-get install -y \
     libgdbm-dev \
     libpq-dev
 
+RUN curl -sSL https://get.docker.com/gpg | apt-key add -
+RUN curl -sSL https://get.docker.com/ | sh
+
 USER jenkins
