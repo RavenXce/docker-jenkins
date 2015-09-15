@@ -28,8 +28,11 @@ RUN apt-get update && apt-get install -y \
     python-pip \
     nodejs
 
+# Install frontend build tools
+RUN npm install -g gulp    
+
 # Install ansible using pip
-RUN pip install ansible
+RUN pip install ansible -q
 
 # Add jenkins as a docker user
 RUN groupadd -g 999 docker
