@@ -7,13 +7,14 @@ USER root
 RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
 
 # Install additional tools / package dependencies for building stuff
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -qqy \
     make \
     automake \
     gcc \
     autoconf \
     bison \
     build-essential \
+    bzip2 \
     libssl-dev \
     libyaml-dev \
     libreadline6-dev \
@@ -27,8 +28,13 @@ RUN apt-get update && apt-get install -y \
     python-dev \
     python-pip \
     nodejs \
-    firefox \
     xvfb
+
+# Install firefox for selenium UI tests
+RUN wget -q https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/41.0/linux-x86_64/en-US/firefox-41.0.tar.bz2 && \
+    tar xvjf firefox-41.0.tar.bz2 -C /opt && \
+    ln -s /opt/firefox/firefox /usr/bin/firefox && \
+    rm firefox-41.0.tar.bz2
 
 # Install frontend build tools
 RUN npm install -g gulp    
