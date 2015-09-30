@@ -26,7 +26,9 @@ RUN apt-get update && apt-get install -y \
     python-setuptools \
     python-dev \
     python-pip \
-    nodejs
+    nodejs \
+    firefox \
+    xvfb
 
 # Install frontend build tools
 RUN npm install -g gulp    
