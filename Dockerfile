@@ -42,6 +42,9 @@ RUN npm install -g gulp
 # Install ansible using pip
 RUN pip install ansible -q
 
+# Install tutum cli using pip
+RUN pip install tutum -q
+
 # Add jenkins as a docker user
 RUN groupadd -g 999 docker
 RUN gpasswd -a jenkins docker
